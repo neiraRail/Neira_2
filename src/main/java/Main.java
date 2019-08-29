@@ -1,12 +1,12 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Main {
+class Main {
 
     public static void main(String[]args){
-        String archivo="";
+        String archivo="/home/dci/Escritorio/texto.txt";
         leer(archivo);
     }
 
@@ -16,9 +16,8 @@ public class Main {
             leer_Archivo(ruta);
         }
         catch(IOException ioe){
-            System.out.println("Archivo no encontrado");
+            System.out.println(ioe);
         }
-
     }
 
 
@@ -29,6 +28,8 @@ public class Main {
         while((texto = br.readLine())!=null) {
             System.out.println(texto);
         }
+
+        br.close();
     }
 
 
