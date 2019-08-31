@@ -1,13 +1,14 @@
-import java.io.BufferedReader;
-
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 class Main {
 
     public static void main(String[]args){
-        String archivo="/home/dci/Escritorio/texto.txt";
-        leer(archivo);
+        String mensaje = "The first man who stepped on the moon.";
+        String archivo="\\Users\\Rail\\Desktop\\texto.txt";
+        //leer(archivo);
+        //añadir(archivo,mensaje);
+        //leer(archivo);
+        añadir("\\Users\\Rail\\Desktop\\NoExiste.txt","mensaje");
     }
 
     public static void leer(String ruta){
@@ -20,6 +21,19 @@ class Main {
         }
     }
 
+    public static void añadir(String ruta, String mensaje){
+        File archivo = new File(ruta);
+        if (archivo.exists()) {
+            try {
+                añadir_Linea(ruta, mensaje);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            System.out.println("El archivo no fue encontrado en este directorio!!");
+        }
+    }
 
     public static void leer_Archivo(String ruta) throws IOException {
         String texto;
@@ -32,9 +46,14 @@ class Main {
         br.close();
     }
 
+    public static void añadir_Linea(String ruta ,String mensaje) throws Exception{
 
-
-    public static void añadir_Linea(){
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        fichero = new FileWriter(ruta, true);
+        pw = new PrintWriter(fichero);
+        pw.println(mensaje);
+        fichero.close();
 
     }
 
