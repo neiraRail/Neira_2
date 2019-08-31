@@ -6,9 +6,7 @@ import static org.junit.Assert.*;
 
 public class MainTest {
 
-    @org.junit.Before
-    public void setUp() throws Exception {
-    }
+
 
     @org.junit.Test(expected = IOException.class)
     public void leer_Archivo_DaExcepcion() throws IOException {

@@ -5,13 +5,17 @@ class Main {
     public static void main(String[]args){
         String mensaje = "The first man who stepped on the moon.";
         String archivo="\\Users\\Rail\\Desktop\\texto.txt";
-        //leer(archivo);
-        //añadir(archivo,mensaje);
-        //leer(archivo);
-        añadir("\\Users\\Rail\\Desktop\\NoExiste.txt","mensaje");
+        leer(archivo);
+        añadir(archivo,mensaje);
+        leer(archivo);
+        //añadir("\\Users\\Rail\\Desktop\\NoExiste.txt","mensaje");
     }
 
-    public static void leer(String ruta){
+    /**
+     * Metodo que llama a leer_Archivo o captura una excpeción.
+     * @param ruta string con la ruta del archivo.
+     */
+    private static void leer(String ruta){
 
         try{
             leer_Archivo(ruta);
@@ -21,6 +25,11 @@ class Main {
         }
     }
 
+    /**
+     * Metodo que llama a leer_Archivo y captura la excepción.
+     * @param ruta string con la ruta del archivo.
+     * @param mensaje string con el texto a añadir.
+     */
     public static void añadir(String ruta, String mensaje){
         File archivo = new File(ruta);
         if (archivo.exists()) {
@@ -35,6 +44,11 @@ class Main {
         }
     }
 
+    /**
+     * Metodo que lee un archivo o lanza una excpecion.
+     * @param ruta string con la ruta del archivo.
+     * @throws IOException en caso que la ruta noe existiera o hubiera un error de lectura.
+     */
     public static void leer_Archivo(String ruta) throws IOException {
         String texto;
         FileReader fr = new FileReader(ruta);
@@ -46,12 +60,15 @@ class Main {
         br.close();
     }
 
-    public static void añadir_Linea(String ruta ,String mensaje) throws Exception{
-
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        fichero = new FileWriter(ruta, true);
-        pw = new PrintWriter(fichero);
+    /**
+     * Metodo que escribe el texto al final del archivo.
+     * @param ruta string con la ruta del archivo.
+     * @param mensaje string con el texto a añadir.
+     * @throws Exception pueden ser lanzadas durante la ejecución.
+     */
+    private static void añadir_Linea(String ruta, String mensaje) throws Exception{
+        FileWriter fichero = new FileWriter(ruta, true);
+        PrintWriter pw = new PrintWriter(fichero);
         pw.println(mensaje);
         fichero.close();
 
